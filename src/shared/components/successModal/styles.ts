@@ -6,9 +6,9 @@ export const Container = styled.main`
   width: 100%;
   /* height: 100vh; */
   /* background: rgba(0, 0, 0, 0.4); */
-  
   position: absolute;
   z-index: 2;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,8 +16,7 @@ export const Container = styled.main`
 `;
 
 export const ChildrenContainer = styled(motion.div)`
-  height: 60vh;
-  width: 70%;
+  height: 250px;
   color: #fff;
   background-color: #ffc40c;
   border-radius: 10px;
@@ -35,9 +34,10 @@ export const ChildrenContainer = styled(motion.div)`
   }
 
   > h1 {
-      height: 70%;
-      font-size: 50px;
+      height: 50%;
+      font-size: clamp(2rem, 3vw, 1rem);
       font-weight: 700;
+      padding: 10px;
 
       text-align: center;
       display: flex;

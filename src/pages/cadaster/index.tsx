@@ -8,13 +8,13 @@ export const Cadaster = () => {
 
   return (
     <Container isActiveModal={isActiveModal}>
-      <div>
+      <section>
         <h1>CADASTRE-SE</h1>
         <div>
           <p>Preencha os campos abaixo para validar sua participação</p>
           <p>na campanha e concorrer aos prêmios.</p>
         </div>
-      </div>
+      </section>
       <FormCadaster 
         isActiveModal={isActiveModal}
         setIsActiveModal={setIsActiveModal}

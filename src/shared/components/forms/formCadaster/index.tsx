@@ -62,15 +62,17 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
   };
 
     return (
+       <>
+        <div>
+          {/* Ativando o SuccessModal sí a requisição for bem sucedida */}
+          { isActiveModal && <SuccessModal setIsActiveModal={setIsActiveModal} /> }
+        </div>
         <FormContainer onSubmit={onSubmitRequest} method="post" 
+          isActiveModal={isActiveModal}
           variants={container}
           initial="hidden"
           animate="visible"
         >
-          
-          {/* Ativando o SuccessModal sí a requisição for bem sucedida */}
-          { isActiveModal && <SuccessModal setIsActiveModal={setIsActiveModal} /> }
-
           <SingleInput>
             <input type="text" id="name" className="input"
                 placeholder="Nome"
@@ -164,5 +166,6 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
             <button type="submit">ENVIAR</button>
           </ButtonsStyle>
         </FormContainer>
+       </>
     );
 };

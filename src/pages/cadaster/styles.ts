@@ -11,19 +11,32 @@ export const Container = styled.main<ContainerProps>`
     background-color:
      ${({isActiveModal}: ContainerProps) => isActiveModal ? "rgba(0, 0, 0, 0.5)": "normal"};
 
-   > div {
+     //* Si o modal form true display none para estes elementos
+     > section h1, p {
+      display: ${({ isActiveModal }: ContainerProps) =>
+        isActiveModal ? "none" : "normal"
+      }
+     }
+     
+     //* Para o modalSuccess
+    > div {
+      display: flex;
+      justify-content: center;
+    }
+     
+   > section {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
    }
 
-  > div h1 {
+  > section h1 {
     font-size: clamp(1.2rem, 3vw, 2rem);
     font-weight: 700;
   }
 
-  > div p {
+  > section p {
     font-weight: 400;
     font-size: clamp(.700rem, 1vw, 1rem);;
   }

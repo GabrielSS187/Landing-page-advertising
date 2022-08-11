@@ -2,12 +2,25 @@ import styled from "styled-components";
 
 import { motion } from "framer-motion";
 
-export const FormContainer = styled(motion.form)`
+interface FormContainerProps {
+  isActiveModal: boolean;
+};
+
+export const FormContainer = styled(motion.form)<FormContainerProps>`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 20px;
+
+  //* Si o modal form true display none para estes elementos
+  //* Tambem encontra-se em pages/cadaster/styles
+  button, input, label, select {
+    display: ${({ isActiveModal }: FormContainerProps) =>
+    isActiveModal ? "none" : "normal"
+    }
+  }
 
   //* Responsividade
   > .container-responsively{
