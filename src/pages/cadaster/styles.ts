@@ -1,9 +1,15 @@
 import styled from "styled-components";
 
-export const Container = styled.main`
+interface ContainerProps {
+  isActiveModal: boolean;
+};
+
+export const Container = styled.main<ContainerProps>`
     padding: 50px;
     padding-bottom: 50px;
     color: #fff;
+    background-color:
+     ${({isActiveModal}: ContainerProps) => isActiveModal ? "rgba(0, 0, 0, 0.5)": "normal"};
 
    > div {
     display: flex;

@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
 export const ButtonsStyle = styled.div`
+    display: flex;
+    justify-content: center;
+
     > button {
       height: 5vh;
       width: 100px;

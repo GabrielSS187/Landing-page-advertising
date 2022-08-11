@@ -1,10 +1,13 @@
+import { useState } from "react";
 import { FormCadaster } from "../../shared/components/forms/formCadaster";
 
 import { Container } from "./styles";
 
 export const Cadaster = () => {
+  const [ isActiveModal, setIsActiveModal ] = useState<boolean>(false);
+
   return (
-    <Container>
+    <Container isActiveModal={isActiveModal}>
       <div>
         <h1>CADASTRE-SE</h1>
         <div>
@@ -12,7 +15,10 @@ export const Cadaster = () => {
           <p>na campanha e concorrer aos prêmios.</p>
         </div>
       </div>
-      <FormCadaster/>
+      <FormCadaster 
+        isActiveModal={isActiveModal}
+        setIsActiveModal={setIsActiveModal}
+      />
     </Container>
   );
 };

@@ -1,22 +1,36 @@
 import { useState } from "react";
-
 import { useForm } from "../../../hooks/useForm";
 
+//* Api
+import { api } from "../../../services/api";
+
+//* B - Mask
 import InputMask from "react-input-mask";
 
+import { clearSpecialCharacters } from "../../../utils/clearSpecialCharacters";
+
+//* Animations
 import { container, item } from "../../../assets/animations/animation";
 import { motion } from "framer-motion";
 
+//* Components
 import { ButtonsStyle } from '../../ButtonsStyle';
-
 import { SingleInput } from "../../singleInput";
+import { SuccessModal } from "../../successModal";
 
+//* Styles
 import { FormContainer, SelectContainer } from './styles';
 
-export const FormCadaster = () => {
+//* ====================================================================
 
+interface FormCadasterProps {
+  isActiveModal: boolean;
+  setIsActiveModal: ( input: boolean ) => void;
+};
+
+export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterProps) => {
   const [ errors, setErrors ] = useState<string>("");
-
+   
   const { form, onChange, clearInputs } = useForm({
     name: "",
     email: "",
@@ -24,27 +38,39 @@ export const FormCadaster = () => {
     password: "",
     password_confirmation: "",
     company: "",
-    segment: "",
+    segment: ""
   });
 
-  const clearSpecialCharacters = ( value: string ) => {
-    return value.replace(/[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/]/gi, '');
-  };
-
-  const onSubmitRequest = async () => {
+  const onSubmitRequest = async (event: any) => {
+    event?.preventDefault();
     try {
-      
+      if ( form.password_confirmation !== form.password ) {
+        throw new Error("Senha incorreta!");
+      } else setErrors("");
+
+      await api.post("/register", {
+        ...form,
+        tax_id: clearSpecialCharacters(form.tax_id)
+      });
+
+      setIsActiveModal(true);
+      clearInputs();
     } catch (error: any) {
       console.log(error?.message);
+      setErrors(error?.message);
     };
   };
 
     return (
-        <FormContainer onSubmit={() => {}}
+        <FormContainer onSubmit={onSubmitRequest} method="post" 
           variants={container}
           initial="hidden"
           animate="visible"
         >
+          
+          {/* Ativando o SuccessModal sí a requisição for bem sucedida */}
+          { isActiveModal && <SuccessModal setIsActiveModal={setIsActiveModal} /> }
+
           <SingleInput>
             <input type="text" id="name" className="input"
                 placeholder="Nome"
@@ -92,7 +118,7 @@ export const FormCadaster = () => {
               </SingleInput>
             </div>
 
-            <motion.div >
+            <motion.div>
               <SingleInput>
                   <input type="email" id="email" className="input" 
                     placeholder="E-mail" 
@@ -113,20 +139,18 @@ export const FormCadaster = () => {
                     value={form.password_confirmation}
                     onChange={onChange}
                     required 
-                  />
+                    />
                   <label htmlFor="password_confirmation">Senha</label>
+                  { errors === "Senha incorreta!" ? <span>{errors}</span> : null}
                 </SingleInput>
 
                 <SelectContainer>
-                  {/* <div> */}
                     <label htmlFor="segment">Classifição</label>
-                  {/* </div> */}
                     <select id="segment" required
                       name="segment"
-                      value={form.segment}
                       onChange={onChange}
                     >
-                      <option defaultValue="">Escolha sua categoria</option>
+                      <option value="">Escolha sua categoria</option>
                       <option value="Gerente">Gerente</option>
                       <option value="Revendedor">Revendedor</option>
                       <option value="Distribuidor">Distribuidor</option>
@@ -135,11 +159,10 @@ export const FormCadaster = () => {
                   <br /> <br />
               </motion.div>
           </motion.div>  
-          {/* container-responsively */}
+          {/* container-responsively end */}
           <ButtonsStyle>
             <button type="submit">ENVIAR</button>
           </ButtonsStyle>
         </FormContainer>
     );
-  
 };

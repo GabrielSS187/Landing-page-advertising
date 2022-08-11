@@ -18,16 +18,14 @@ export const SectionOneHome = () => {
   const navigate: NavigateFunction = useNavigate();
 
   return (
-    <Container id="section-home-background" 
-    
-    >
-         <ImgCloudsSectionOne>
-          <motion.img src={"/imgs/clouds.png"} alt="clouds"
+    <Container id="section-home-background">
+        <ImgCloudsSectionOne>
+          <motion.img src={"/imgs/clouds.png"} loading="lazy" alt="clouds"
             animate={{scale: [ 0, 0, 1, 1, 1 ]}} transition={{ duration: 2}}
           />
-         </ImgCloudsSectionOne>
+        </ImgCloudsSectionOne>
 
-         <ImgLogoSectionOne>
+        <ImgLogoSectionOne>
           <div className="svg-logo">
             <LogoCamapanhaRedTagline />
           </div>
@@ -47,7 +45,7 @@ export const SectionOneHome = () => {
               </ButtonsStyle>
             </a>
           </div>
-         </ImgLogoSectionOne>
+        </ImgLogoSectionOne>
       </Container>
   );
 };

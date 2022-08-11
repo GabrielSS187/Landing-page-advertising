@@ -7,7 +7,6 @@ export const Container = styled.section`
   background-repeat: no-repeat; 
   background-size: cover;
   overflow-y: hidden;
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -17,7 +16,6 @@ export const Container = styled.section`
   @media (min-width: 750px) {
     flex-direction: row-reverse;
   }
-
   @media (min-width: 1000px) {
     gap: 80px;
   }
@@ -28,58 +26,13 @@ export const ImgCloudsSectionOne = styled.div`
     justify-content: center;
 
   > img {
-    height: 300px;
-    width: 300px;
+    width: max(300px, 50vw);
     margin-top: 20px;
     flex-shrink: 0;
-  }
-
-  //* Responsive
-  @media (min-width: 550px) {
-    > img {
-      height: 350px;
-      width: 350px;
-    }
-  };
-
-  @media (min-width: 750px) {
-    > img {
-      height: 400px;
-      width: 400px;
-    }
-  }
-
-  @media (min-width: 900px) {
-    > img {
-      height: 500px;
-      width: 500px;
-    }
-  }
-
-  @media (min-width: 1000px) {
-    > img {
-      height: 700px;
-      width: 700px;
-    }
-  }
-
-  @media (min-width: 1000px) {
-    > img {
-      height: 700px;
-      width: 700px;
-    }
-  }
-
-  @media (min-width: 1200px) {
-    > img {
-      height: 800px;
-      width: 800px;
-    }
   }
 `;
 
 export const ImgLogoSectionOne = styled.div`
-
    > .svg-logo {
       display: flex;
       justify-content: center;
@@ -91,9 +44,9 @@ export const ImgLogoSectionOne = styled.div`
   }
 
   > .container-buttons {
-    width: 100%;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: 15px;
     padding-top: 20px;
   }
