@@ -67,7 +67,7 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
           {/* Ativando o SuccessModal sí a requisição for bem sucedida */}
           { isActiveModal && <SuccessModal setIsActiveModal={setIsActiveModal} /> }
         </div>
-        <FormContainer onSubmit={onSubmitRequest} method="post" 
+        <FormContainer onSubmit={() => onSubmitRequest} method="post" 
           isActiveModal={isActiveModal}
           variants={container}
           initial="hidden"
@@ -150,7 +150,7 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
                     <label htmlFor="segment">Classifição</label>
                     <select id="segment" required
                       name="segment"
-                      onChange={onChange}
+                      onChange={() => onChange}
                     >
                       <option value="">Escolha sua categoria</option>
                       <option value="Gerente">Gerente</option>
