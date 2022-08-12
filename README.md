@@ -23,7 +23,6 @@ https://user-images.githubusercontent.com/86306877/184262957-4f8c0f6e-fc77-40af-
 https://user-images.githubusercontent.com/86306877/184262887-3c0ef9c8-8b66-4d47-b464-843b256860b4.mp4
 
 
-
 ## Competências
 - Responsividade
 - Estrutura de organização de pastas
