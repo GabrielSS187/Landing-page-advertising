@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useForm } from "../../../hooks/useForm";
 
 //* Api
@@ -41,7 +41,7 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
     segment: ""
   });
 
-  const onSubmitRequest = async (event: any) => {
+  const onSubmitRequest = async (event: ChangeEvent) => {
     event?.preventDefault();
     try {
       if ( form.password_confirmation !== form.password ) {
