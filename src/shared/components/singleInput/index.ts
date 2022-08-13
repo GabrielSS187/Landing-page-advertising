@@ -15,13 +15,6 @@ export const SingleInput = styled.div`
     transition: .5s;
   }
 
-  > span {
-    color: red;
-    position: absolute;
-    left: 0;
-    bottom: -25px;
-  }
-
   > .input::placeholder {
     opacity: 0;
   }

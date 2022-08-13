@@ -41,8 +41,8 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
     segment: ""
   });
 
-  const onSubmitRequest = async (event: ChangeEvent) => {
-    event?.preventDefault();
+  const onSubmitRequest = async (event: ChangeEvent<HTMLFormElement>) => {
+    event.preventDefault();
     try {
       if ( form.password_confirmation !== form.password ) {
         throw new Error("Senha incorreta!");
@@ -55,6 +55,7 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
 
       setIsActiveModal(true);
       clearInputs();
+      setErrors("");
     } catch (error: any) {
       console.log(error?.message);
       setErrors(error?.message);
@@ -67,7 +68,10 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
           {/* Ativando o SuccessModal sí a requisição for bem sucedida */}
           { isActiveModal && <SuccessModal setIsActiveModal={setIsActiveModal} /> }
         </div>
-        <FormContainer onSubmit={() => onSubmitRequest} method="post" 
+        <br />
+        {errors && <p>Algo deu errado desculpe!</p>}
+        <br />
+        <FormContainer onSubmit={onSubmitRequest} method="post" 
           isActiveModal={isActiveModal}
           variants={container}
           initial="hidden"
@@ -142,15 +146,17 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
                     onChange={onChange}
                     required 
                     />
-                  <label htmlFor="password_confirmation">Senha</label>
-                  { errors === "Senha incorreta!" ? <span>{errors}</span> : null}
+                  { errors === "Senha incorreta!" 
+                    ? ( <label htmlFor="password_confirmation">{errors}</label> ) 
+                    : (<label htmlFor="password_confirmation">Senha</label> )
+                  }
                 </SingleInput>
 
                 <SelectContainer>
                     <label htmlFor="segment">Classifição</label>
                     <select id="segment" required
                       name="segment"
-                      onChange={() => onChange}
+                      onChange={onChange}
                     >
                       <option value="">Escolha sua categoria</option>
                       <option value="Gerente">Gerente</option>
