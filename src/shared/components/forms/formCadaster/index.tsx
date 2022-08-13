@@ -69,7 +69,7 @@ export const FormCadaster = ({ isActiveModal, setIsActiveModal }: FormCadasterPr
           { isActiveModal && <SuccessModal setIsActiveModal={setIsActiveModal} /> }
         </div>
         <br />
-        {errors && <p>Algo deu errado desculpe!</p>}
+        {errors && <p style={{textAlign: "center"}}>Algo deu errado desculpe!</p>}
         <br />
         <FormContainer onSubmit={onSubmitRequest} method="post" 
           isActiveModal={isActiveModal}
