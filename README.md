@@ -51,7 +51,7 @@ Pré-requisitos: npm / yarn
 
 ```bash
 # clonar repositório
-https://github.com/GabrielSS187/Landing-page-advertising-1.git
+git clone https://github.com/GabrielSS187/Landing-page-advertising-1.git
 
 # entrar na pasta do projeto front end web
 cd Landing-page-advertising-1
