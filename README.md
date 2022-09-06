@@ -1,4 +1,4 @@
-# Landing-page-advertising-1
+# Landing-page-advertising
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/GabrielSS187/Landing-page-advertising-1/blob/main/LICENSE) 
 
 <p align="center">
@@ -9,7 +9,7 @@
 
 ### Link: [Landing-page-advertising-1](http://landing-page-advertising.surge.sh/)
 
-`` Landing-page-advertising-1`` é uma aplicação front-end web construida para propaganda de empresa.
+`` Landing-page-advertising`` é uma aplicação front-end web construida para propaganda de empresa.
 
 A aplicação consiste em fazer uma propaganda, onde si tem um formulário de inscriçaõ onde o usuário preencher e concorre a prêmios, e
 outro formulário de Login onde o usuário efetuar o login após o cadastro. A página de cadastro pega as informações do usuário e envia
